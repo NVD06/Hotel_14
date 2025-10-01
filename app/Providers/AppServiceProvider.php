@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
-      protected $policies = [];
+    protected $policies = [];
     /**
      * Register any application services.
      */
@@ -21,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-         Gate::define('admin', fn ($user) => $user->role === 'admin');
+        Gate::define('admin', function ($user) {
+            return $user->role === 'admin';
+        });
     }
 }
