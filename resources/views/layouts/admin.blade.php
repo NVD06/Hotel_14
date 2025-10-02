@@ -12,7 +12,7 @@
   {{-- Topbar gọn cho admin --}}
   <header class="bg-white border-b">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2">
+      <a href="{{ route('admin.home') }}" class="flex items-center gap-2">
         <span class="inline-flex h-8 w-8 items-center justify-center rounded-md bg-indigo-600 text-white font-bold">H</span>
         <span class="text-lg font-semibold tracking-tight">HOTTE</span>
       </a>
@@ -34,7 +34,7 @@
         @php
           // CHỈ GIỮ MENU ADMIN – xếp dọc
           $menu = [
-            ['label'=>'Trang chủ', 'route'=>'admin.dashboard',   'active'=>'admin.dashboard'],
+            ['label'=>'Trang chủ', 'route'=>'admin.home',   'active'=>'admin.home'],
             ['label'=>'Doanh thu', 'route'=>'admin.revenue',     'active'=>'admin.revenue'],
             ['label'=>'Phòng',     'route'=>'admin.rooms.index', 'active'=>'admin.rooms.*'],
             ['label'=>'Pages',     'route'=>'admin.pages.index', 'active'=>'admin.pages.*'],
