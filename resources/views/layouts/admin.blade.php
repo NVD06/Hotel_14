@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-  {{-- Topbar gọn cho admin --}}
+  <!-- Topbar gọn cho admin -->
   <header class="bg-white border-b">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="{{ route('admin.home') }}" class="flex items-center gap-2">
@@ -25,18 +25,17 @@
     </div>
   </header>
 
-  {{-- Khung: sidebar trái + nội dung --}}
+   <!-- Khung: sidebar trái + nội dung  -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="py-6 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-6">
-      {{-- SIDEBAR (chỉ admin) --}}
+      <!-- SIDEBAR (chỉ admin)  -->
       <aside class="md:sticky md:top-[4.5rem] md:h-[calc(100vh-5rem)] md:overflow-y-auto">
 
         @php
-          // CHỈ GIỮ MENU ADMIN – xếp dọc
           $menu = [
             ['label'=>'Trang chủ', 'route'=>'admin.home',   'active'=>'admin.home'],
             ['label'=>'Doanh thu', 'route'=>'admin.revenue',     'active'=>'admin.revenue'],
-            ['label'=>'Phòng',     'route'=>'admin.rooms.index', 'active'=>'admin.rooms.*'],
+            ['label'=>'Phòng',     'route'=>'admin.room-types.index', 'active'=>'admin.room-types.*'],
             ['label'=>'Pages',     'route'=>'admin.pages.index', 'active'=>'admin.pages.*'],
           ];
         @endphp
@@ -58,7 +57,7 @@
         </nav>
       </aside>
 
-      {{-- NỘI DUNG --}}
+       <!-- NỘI DUNG  -->
       <main class="min-h-[60vh]">
         @yield('content')
       </main>

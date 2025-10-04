@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
 
-      {{-- LEFT: Brand --}}
+    <!-- LEFT: Brand  -->
       <div class="flex items-center gap-3">
         <a href="{{ route('welcome') }}" class="flex items-center gap-2">
           <span class="inline-flex h-8 w-8 items-center justify-center rounded-md bg-indigo-600 text-white font-bold">H</span>
@@ -10,7 +10,7 @@
         </a>
       </div>
 
-      {{-- RIGHT --}}
+     <!-- RIGHT  -->
       <div class="hidden md:flex items-center gap-6">
         <div class="flex items-center gap-4">
           @auth
@@ -26,7 +26,7 @@
           <x-nav-link :href="route('rooms')" :active="request()->routeIs('rooms')">Our room</x-nav-link>
           <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">Contact us</x-nav-link>
 
-          {{-- Cart (nếu cần) --}}
+      
           @auth
           <x-nav-link :href="route('payments.index')" :active="request()->routeIs('payments.*')" aria-label="Giỏ hàng">
             <i class="fa-solid fa-cart-shopping text-[18px]"></i>
@@ -35,7 +35,7 @@
           @endauth
         </div>
 
-        {{-- Admin --}}
+         <!-- Admin  -->
         @can('admin')
         <div class="h-5 w-px bg-gray-200"></div>
         <a href="{{ route('admin.home') }}" class="px-3 py-2 rounded-md text-sm font-medium bg-gray-900 text-white hover:opacity-90">
@@ -43,7 +43,7 @@
         </a>
         @endcan
 
-        {{-- Auth / Guest --}}
+         <!-- Guest -->
         @auth
         <div class="flex items-center">
           <x-dropdown align="right" width="48">

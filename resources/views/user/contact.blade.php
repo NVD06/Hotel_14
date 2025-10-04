@@ -3,9 +3,8 @@
 @section('title','Contact Us')
 
 @section('content')
-
 <div>
-    <form method="POST" action="{{ route('contact') }}" class="space-y-5">
+    <form id="contact-form" method="POST" action="{{ route('contact') }}" class="space-y-5">
         @csrf
 
         <input type="text" name="name" placeholder="Name"
@@ -20,12 +19,18 @@
         <textarea name="message" rows="6" placeholder="Message"
             class="w-full rounded-md border border-red-200 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-3"></textarea>
 
-
         <button type="submit"
             class="w-full md:w-44 h-12 rounded-full bg-indigo-600 text-white font-semibold tracking-wide shadow hover:bg-indigo-700">
             SEND
         </button>
     </form>
-</div>
 
-@endsection
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Tính năng đang phát triển. Vui lòng quay lại sau!');
+        });
+    </script>
+
+    @endsection

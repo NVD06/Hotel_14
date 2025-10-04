@@ -12,6 +12,7 @@ use App\Http\Controllers\{
     PaymentController,
     RoomImageController
 };
+
 Route::view('/', 'welcome')->name('welcome'); // landing cho khách
 
 
@@ -24,23 +25,25 @@ Route::view('/rooms',   'User.room')->name('rooms');
 Route::view('/contact', 'User.contact')->name('contact');
 
 /* -------- Admin area (/admin) -------- */
-Route::middleware(['auth','can:admin'])
+Route::middleware(['auth', 'can:admin'])
     ->prefix('admin')->name('admin.')
     ->group(function () {
         Route::view('/',        'admin.home')->name('home');
         Route::view('/revenue', 'admin.revenue')->name('revenue');
         Route::view('/pages',   'admin.pages')->name('pages.index');
 
-        Route::resource('room-types', RoomTypeController::class);
-        Route::resource('rooms',      RoomController::class);
+        Route::resource('room-types', RoomTypeController::class)->only(['index']);
+        Route::resource('rooms', RoomController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 
-        Route::post  ('rooms/{room}/images',                 [RoomImageController::class, 'store'])->name('rooms.images.store');
-        Route::put   ('rooms/{room}/images/{image}/primary', [RoomImageController::class, 'setPrimary'])->name('rooms.images.primary');
+        Route::get('room-types/{roomType}/rooms', [RoomController::class, 'byType'])
+            ->name('room-types.rooms');
+        Route::post('rooms/{room}/images',                 [RoomImageController::class, 'store'])->name('rooms.images.store');
+        Route::put('rooms/{room}/images/{image}/primary', [RoomImageController::class, 'setPrimary'])->name('rooms.images.primary');
         Route::delete('rooms/{room}/images/{image}',         [RoomImageController::class, 'destroy'])->name('rooms.images.destroy');
     });
 
 /* -------- Khu user sau đăng nhập -------- */
-Route::middleware(['auth','verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard của user: /home
     Route::view('/home', 'user.home')->name('user.home');
 
@@ -53,14 +56,14 @@ Route::middleware(['auth','verified'])->group(function () {
 
     // Profile + nghiệp vụ user
     Route::get('/profile',  [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile',[ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile',[ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('customers', CustomerController::class);
     Route::resource('bookings',  BookingController::class);
-    Route::resource('payments',  PaymentController::class)->only(['index','create','store','show']);
+    Route::resource('payments',  PaymentController::class)->only(['index', 'create', 'store', 'show']);
 
     Route::get('api/rooms/available', [RoomController::class, 'available'])->name('rooms.available');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
