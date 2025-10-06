@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    trang giá trị 
+    ĐANG PHÁT TRIỂN, MIẾN
 </body>
 </html>
