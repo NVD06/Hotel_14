@@ -25,7 +25,7 @@
           <ul class="mt-6 space-y-3 text-gray-700">
             <li><a class="hover:underline {{ request()->routeIs('user.home') ? 'text-red-600' : 'text-black' }}" href="{{ route('welcome') }}">Home</a></li>
             <li><a class="hover:underline {{ request()->routeIs('user.about')   ? 'text-red-600' : 'text-black' }}" href="{{ route('about') }}">About</a></li>
-            <li><a class="hover:underline {{ request()->routeIs('user.room')   ? 'text-red-600' : 'text-black' }}" href="{{ route('rooms') }}">Our Room</a></li>
+            <li><a class="hover:underline {{ request()->routeIs('user.rooms.index')   ? 'text-red-600' : 'text-black' }}" href="{{ route('user.rooms.index') }}">Our Room</a></li>
             <li><a class="hover:underline {{ request()->routeIs('user.contact') ? 'text-red-600' : 'text-black' }}" href="{{ route('contact') }}">Contact Us</a></li>
           </ul>
         </div>

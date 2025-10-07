@@ -26,4 +26,5 @@ class Room extends Model
     {
         return $this->hasOne(\App\Models\RoomImage::class)->where('is_primary', true);
     }
+    
 }
