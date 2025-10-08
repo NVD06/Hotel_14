@@ -93,8 +93,8 @@ class BookingController extends Controller
     public function review(Room $room, Request $request)
     {
         $data = $request->validate([
-            'check_in_date'   => ['required', 'date'],
-            'check_out_date'  => ['required', 'date'],
+            'check_in_date'   => ['required', 'date', 'after_or_equal:today'],
+            'check_out_date'  => ['required', 'date', 'after:check_in_date'],
             'check_in_time'   => ['nullable', 'date_format:H:i'],
             'check_out_time'  => ['nullable', 'date_format:H:i'],
         ], [], [

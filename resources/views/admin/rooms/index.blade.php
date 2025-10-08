@@ -48,6 +48,14 @@
         </div>
         @endif
     </div>
+    @php
+    $STATUS_VI = [
+    'available' => 'Trống',
+    'occupied' => 'Đang ở',
+    'cleaning' => 'Đang dọn',
+    'maintenance' => 'Bảo trì',
+    ];
+    @endphp
 
     <div class="overflow-x-auto bg-white rounded-lg border">
         <table class="min-w-full text-sm">
@@ -59,14 +67,16 @@
                     <th class="p-3 text-left">Trạng thái</th>
                     <th class="p-3 text-right">Thao tác</th>
                 </tr>
-            </thead>
+            </thead> 
             <tbody>
                 @forelse($rooms as $room)
                 <tr class="border-t">
                     <td class="p-3 font-medium">{{ $room->room_number }}</td>
                     <td class="p-3">{{ $room->type?->name }}</td>
                     <td class="p-3">{{ $room->floor ?? '-' }}</td>
-                    <td class="p-3">{{ ucfirst($room->status) }}</td>
+                    <td class="p-3">
+                        {{ $STATUS_VI[strtolower($room->status ?? '')] ?? ($room->status ?? '—') }}
+                    </td>
                     <td class="p-3 text-right">
                         <a href="{{ route('admin.rooms.edit',$room) }}" class="px-3 py-1 rounded border">Sửa</a>
                         <form action="{{ route('admin.rooms.destroy',$room) }}" method="POST" class="inline"
