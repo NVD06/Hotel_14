@@ -201,4 +201,22 @@ class RoomController extends Controller
         $mode = 'byType';
         return view('admin.rooms.index', compact('rooms', 'roomType', 'mode'));
     }
+    public function show(Room $room)
+    {
+
+        $room->load([
+            'type',
+            'images',
+            'bookingItems' => function ($q) {
+                $q->orderByDesc('id')
+                    ->with([
+                        'booking' => function ($b) {
+                            // KHÔNG giới hạn select -> tránh lỗi thiếu cột
+                            $b->with(['customer']); // nếu có quan hệ customer
+                        }
+                    ]);
+            },
+        ]);
+        return view('admin.rooms.show', compact('room'));
+    }
 }

@@ -163,9 +163,9 @@ $rooms = Room::with('type')
                   @endif
                 </td>
 
-                <!-- <td class="p-3 text-right whitespace-nowrap">
-                  <a href="{{ route('admin.rooms.edit',$room) }}" class="px-3 py-1 rounded border hover:bg-gray-50">Sửa</a>
-                </td> -->
+                <td class="p-3 text-right whitespace-nowrap">
+                  <a href="{{ route('admin.rooms.show', $room) }}" class="px-3 py-1 rounded border hover:bg-gray-50">Chi tiết</a>
+                </td>
               </tr>
               @empty
               <tr>

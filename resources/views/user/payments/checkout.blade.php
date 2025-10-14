@@ -22,7 +22,7 @@
       @csrf
       <label class="block font-medium">Phương thức thanh toán</label>
       <select name="method" class="border rounded p-2">
-        <option value="cash">Tiền mặt</option>
+        <option value="cash">Thanh toán</option>
         <option value="bank">Chuyển khoản</option>
         <option value="momo">Momo</option>
         <option value="vnpay">VNPAY</option>

@@ -21,6 +21,7 @@ Route::view('/about',   'User.about')->name('about');
 Route::view('/rooms',   'User.room')->name('rooms');
 Route::view('/contact', 'User.contact')->name('contact');
 
+
 /* -------- Admin area (/admin) -------- */
 Route::middleware(['auth', 'can:admin'])
     ->prefix('admin')->name('admin.')
@@ -41,7 +42,7 @@ Route::middleware(['auth', 'can:admin'])
         // Danh sách phòng theo loại
         Route::get('room-types/{roomType}/rooms', [RoomController::class, 'byType'])
             ->name('room-types.rooms');
-
+        Route::resource('rooms', RoomController::class);
         // ẢNH PHÒNG
         Route::post('rooms/{room}/images',                [RoomImageController::class, 'store'])->name('rooms.images.store');
         Route::put('rooms/{room}/images/{image}/primary', [RoomImageController::class, 'setPrimary'])->name('rooms.images.primary');

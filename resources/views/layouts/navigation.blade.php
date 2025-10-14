@@ -31,12 +31,7 @@
 
 
           @auth
-          <x-nav-link :href="route('user.cart')" :active="request()->routeIs('user.cart*')">
-  <span class="inline-flex items-center gap-2">
-    <svg width="16" height="16" ...>...</svg>
-    Giỏ hàng
-  </span>
-</x-nav-link>
+          <x-nav-link :href="route('user.cart')" :active="request()->routeIs('user.cart*')">Giỏ hàng</x-nav-link>
           @endauth
         </div>
 

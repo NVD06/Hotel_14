@@ -35,6 +35,7 @@
             <a href="{{ route('user.home') }}"
                class="px-4 py-2 rounded-md bg-indigo-600 text-white hover:opacity-90">
               Vào Dashboard
+      
             </a>
           </div>
         @endauth
